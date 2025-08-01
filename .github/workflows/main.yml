@@ -44,6 +44,18 @@ jobs:
           flutter build apk --flavor dev --dart-define=APP_FLAVOR=DEV
           flutter build apk --flavor stage --dart-define=APP_FLAVOR=STAGE
 
+      - name: Install CocoaPods dependencies
+        run: |
+          cd ios
+          pod install
+          cd ..
+
+      - name: Flutter Build iOS (dev)
+        run: flutter build ios --flavor dev --dart-define=APP_FLAVOR=DEV --no-codesign
+
+      - name: Flutter Build iOS (stage)
+        run: flutter build ios --flavor stage --dart-define=APP_FLAVOR=STAGE --no-codesign
+
       - name: Archive untracked files
         run: |
           mkdir -p $ARCHIVE_DIR
