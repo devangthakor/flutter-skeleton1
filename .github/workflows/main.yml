@@ -18,6 +18,10 @@ jobs:
       ARCHIVE_DIR: untracked-files-archive
 
     steps:
+      # Install curl (if it's missing)
+      - name: Install curl
+        run: sudo apt-get install curl
+
       # Install Homebrew
       - name: Install Homebrew
         run: |
