@@ -13,27 +13,11 @@ jobs:
     runs-on: macos-latest
     env:
       ANDROID: ${{ secrets.ANDROID_HOME }}
-      PATH: ${{ secrets.ANDROID_HOME }}/platform-tools:${{ secrets.ANDROID_HOME }}/cmdline-tools/latest/bin:${{ secrets.ANDROID_HOME }}/cmdline-tools/latest:$PATH
+#      PATH: ${{ secrets.ANDROID_HOME }}/platform-tools:${{ secrets.ANDROID_HOME }}/cmdline-tools/latest/bin:${{ secrets.ANDROID_HOME }}/cmdline-tools/latest:$PATH
       ANDROID_SDK: ${{ secrets.ANDROID_HOME }}
       ARCHIVE_DIR: untracked-files-archive
 
     steps:
-      # Install curl (if it's missing)
-      - name: Install curl
-        run: sudo apt-get install curl
-
-      # Install Homebrew
-      - name: Install Homebrew
-        run: |
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-      # Install tar using Homebrew (macOS)
-      - name: Install tar
-        run: brew install gnu-tar
-
-      # Check tar installation
-      - name: Check tar installation
-        run: gtar --version
 
       - name: Checkout code
         uses: actions/checkout@v2
