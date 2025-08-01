@@ -18,6 +18,10 @@ jobs:
       ARCHIVE_DIR: untracked-files-archive
 
     steps:
+      # Install Homebrew
+      - name: Install Homebrew
+        run: |
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
       # Install tar using Homebrew (macOS)
       - name: Install tar
