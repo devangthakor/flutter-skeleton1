@@ -44,6 +44,9 @@ jobs:
           flutter build apk --flavor dev --dart-define=APP_FLAVOR=DEV
           flutter build apk --flavor stage --dart-define=APP_FLAVOR=STAGE
 
+      - name: Select Xcode version
+        run: sudo xcode-select -s /Applications/Xcode_15.2.app
+
       - name: Install CocoaPods dependencies
         run: |
           sudo gem install cocoapods --pre
