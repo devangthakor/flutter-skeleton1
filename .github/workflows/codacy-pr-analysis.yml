@@ -1,0 +1,48 @@
+name: Codacy Pull Request Analysis
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+      - '**'
+
+jobs:
+  codacy-analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Flutter & Dart
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.27.0'             # or your desired version
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Install Codacy CLI v2
+        run: |
+          bash <(curl -sSL https://raw.githubusercontent.com/codacy/codacy-cli-v2/main/codacy-cli.sh)
+          chmod +x codacy-cli
+          sudo mv codacy-cli /usr/local/bin/
+
+      - name: (Optional) Init Codacy config
+        run: codacy-cli init
+        if: ${{ !fileExists('.codacy/codacy.yaml') }}
+
+      - name: Install analysis tools
+        run: codacy-cli install
+
+      - name: Run analysis with Codacy CLI
+        run: codacy-cli analyze --format sarif --output report.dartanalyzer.sarif
+
+      - name: Upload SARIF to Codacy
+        env:
+          GITHUB_COMMIT: ${{ github.event.pull_request.head.sha }}
+        run: |
+          codacy-cli upload \
+            --sarif-path report.dartanalyzer.sarif \
+            --commit-uuid $GITHUB_COMMIT \
+            --project-token "${{ secrets.CODACY_PROJECT_TOKEN }}"
