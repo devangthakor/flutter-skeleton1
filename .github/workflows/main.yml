@@ -46,6 +46,7 @@ jobs:
 
       - name: Install CocoaPods dependencies
         run: |
+          sudo gem install cocoapods --pre
           cd ios
           pod install
           cd ..
