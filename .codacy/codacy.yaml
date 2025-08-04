@@ -1,33 +1,5 @@
 ---
-exclude_paths:
-    # Exclude generated code and build artifacts
-    - "build/**"
-    - ".dart_tool/**"
-    - "**/*.g.dart"
-    - "**/*.freezed.dart"
-    - "coverage/**"
-    - "android/**"
-    - "ios/**"
-    - "linux/**"
-    - "windows/**"
-    - "web/**"
-    - "macos/**"
-    - ".idea/**"
-    - ".vscode/**"
-
-# Optionally include only certain directories (e.g., include integration tests)
-include_paths:
-    - "lib/**"
-    - "test/**"
-
-languages:
-    dart:
-        # Add custom file extensions if you use them
-        extensions:
-            - ".dart"
-
-# Example: Dart analyzer tool config (for CLI)
-# If you use the Codacy CLI and want to specify Dart/Flutter versions
-dartanalyzer:
-    version: "stable"  # or use "beta", or specify a version
-    flutter: true
+runtimes:
+    - dart@3.7.2
+tools:
+    - dartanalyzer@3.7.20
