@@ -61,8 +61,9 @@ jobs:
           sudo gem install cocoapods
           cd ios
           rm -rf Pods Podfile.lock
-          pod deintegrate        # wipe old pods
-          pod update            # regenerate with current Firebase / Swift 5.9
+          pod cache clean --all
+          pod repo update      # wipe old pods
+          pod install           # regenerate with current Firebase / Swift 5.9
           cd ..
 
       # 6 ────────────────────────────────────── iOS BUILDS
