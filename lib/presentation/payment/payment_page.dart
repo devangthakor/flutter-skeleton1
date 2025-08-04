@@ -95,7 +95,7 @@ class _MyPaymentPageState extends State<MyPaymentPage> {
                         controller: nameController,
                         keyboardType: TextInputType.name,
                         decoration: InputDecoration(
-                          hintText: 'John Doe',
+                          hintText: 'John Doe ',
                           border: OutlineInputBorder(),
                         ),
                       ),
