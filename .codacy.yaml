@@ -1,0 +1,18 @@
+---
+runtimes:
+  - flutter@3.27.0
+tools:
+  - dartanalyzer@3.7.20
+languages:
+  dart:
+    include_paths:
+      - lib/**
+      - test/**
+    exclude_paths:
+      - lib/generated/**
+      - android/**
+      - ios/**
+      - macos/**
+      - windows/**
+      - linux/**
+      - web/**

@@ -1,0 +1,21 @@
+name: Codacy Analysis
+
+on: [push, pull_request]
+
+jobs:
+  codacy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.27.0"
+
+      - name: Run Codacy CLI
+        uses: codacy/codacy-cli-v2-action@main
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}  # or api_token
+          tool: dartanalyzer
+          upload_report: true
