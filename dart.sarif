@@ -1,0 +1,88 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/test/flutter_test_config.dart"
+                },
+                "region": {
+                  "startLine": 16
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "The value of the argument is redundant because it matches the default value."
+          },
+          "ruleId": "AVOID_REDUNDANT_ARGUMENT_VALUES"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/test/presentation/delete_account/delete_account_screen_test.dart"
+                },
+                "region": {
+                  "startLine": 222
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Missing whitespace between adjacent strings."
+          },
+          "ruleId": "MISSING_WHITESPACE_BETWEEN_ADJACENT_STRINGS"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/test/presentation/delete_account/delete_account_screen_test.dart"
+                },
+                "region": {
+                  "startLine": 222
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "The line length exceeds the 80-character limit."
+          },
+          "ruleId": "LINES_LONGER_THAN_80_CHARS"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/test/test_config.dart"
+                },
+                "region": {
+                  "startLine": 10
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "The value of the argument is redundant because it matches the default value."
+          },
+          "ruleId": "AVOID_REDUNDANT_ARGUMENT_VALUES"
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "dartanalyzer",
+          "rules": null
+        }
+      }
+    }
+  ],
+  "version": "2.1.0"
+}
