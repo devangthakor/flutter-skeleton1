@@ -81,7 +81,9 @@ class _LoginScreenBody extends StatelessWidget {
             context.localization.login_signup_login_to_app,
             style: AppTextStyles.h2Bold,
           ),
-          const SizedBox(height: 30),
+          const SizedBox(
+            height: 30,
+          ),
           const LoginButton(),
           const SizedBox(height: 30),
           const LoginSignUpButtonDivider(),
