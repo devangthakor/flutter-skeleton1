@@ -1,0 +1,574 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_screen.dart"
+                },
+                "region": {
+                  "startLine": 16
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "The value of the argument is redundant because it matches the default value."
+          },
+          "ruleId": "AVOID_REDUNDANT_ARGUMENT_VALUES"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_screen.dart"
+                },
+                "region": {
+                  "startLine": 24
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Use 'const' with the constructor to improve performance."
+          },
+          "ruleId": "PREFER_CONST_CONSTRUCTORS"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_screen.dart"
+                },
+                "region": {
+                  "startLine": 31
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Unnecessary use of double quotes."
+          },
+          "ruleId": "PREFER_SINGLE_QUOTES"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_screen.dart"
+                },
+                "region": {
+                  "startLine": 64
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "The value of the argument is redundant because it matches the default value."
+          },
+          "ruleId": "AVOID_REDUNDANT_ARGUMENT_VALUES"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_screen.dart"
+                },
+                "region": {
+                  "startLine": 65
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Use 'const' with the constructor to improve performance."
+          },
+          "ruleId": "PREFER_CONST_CONSTRUCTORS"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_screen.dart"
+                },
+                "region": {
+                  "startLine": 66
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Use 'const' with the constructor to improve performance."
+          },
+          "ruleId": "PREFER_CONST_CONSTRUCTORS"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_screen.dart"
+                },
+                "region": {
+                  "startLine": 102
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "The value of the argument is redundant because it matches the default value."
+          },
+          "ruleId": "AVOID_REDUNDANT_ARGUMENT_VALUES"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_subscription screen.dart"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "The file name 'payment_subscription screen.dart' isn't a lower_case_with_underscores identifier."
+          },
+          "ruleId": "FILE_NAMES"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_subscription screen.dart"
+                },
+                "region": {
+                  "startLine": 14
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Unnecessary use of double quotes."
+          },
+          "ruleId": "PREFER_SINGLE_QUOTES"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_subscription screen.dart"
+                },
+                "region": {
+                  "startLine": 25
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Unnecessary use of double quotes."
+          },
+          "ruleId": "PREFER_SINGLE_QUOTES"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_subscription screen.dart"
+                },
+                "region": {
+                  "startLine": 47
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Unnecessary use of double quotes."
+          },
+          "ruleId": "PREFER_SINGLE_QUOTES"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_subscription screen.dart"
+                },
+                "region": {
+                  "startLine": 51
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Unnecessary use of double quotes."
+          },
+          "ruleId": "PREFER_SINGLE_QUOTES"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_subscription screen.dart"
+                },
+                "region": {
+                  "startLine": 58
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Missing a required trailing comma."
+          },
+          "ruleId": "REQUIRE_TRAILING_COMMAS"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_subscription screen.dart"
+                },
+                "region": {
+                  "startLine": 66
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Unnecessary use of double quotes."
+          },
+          "ruleId": "PREFER_SINGLE_QUOTES"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_subscription screen.dart"
+                },
+                "region": {
+                  "startLine": 66
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Unnecessary use of double quotes."
+          },
+          "ruleId": "PREFER_SINGLE_QUOTES"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_subscription screen.dart"
+                },
+                "region": {
+                  "startLine": 67
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Use 'const' with the constructor to improve performance."
+          },
+          "ruleId": "PREFER_CONST_CONSTRUCTORS"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_subscription screen.dart"
+                },
+                "region": {
+                  "startLine": 75
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Missing a required trailing comma."
+          },
+          "ruleId": "REQUIRE_TRAILING_COMMAS"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_subscription screen.dart"
+                },
+                "region": {
+                  "startLine": 79
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Unnecessary use of double quotes."
+          },
+          "ruleId": "PREFER_SINGLE_QUOTES"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_subscription screen.dart"
+                },
+                "region": {
+                  "startLine": 80
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Unnecessary use of double quotes."
+          },
+          "ruleId": "PREFER_SINGLE_QUOTES"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_subscription screen.dart"
+                },
+                "region": {
+                  "startLine": 81
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Unnecessary use of double quotes."
+          },
+          "ruleId": "PREFER_SINGLE_QUOTES"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_subscription screen.dart"
+                },
+                "region": {
+                  "startLine": 82
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Unnecessary use of double quotes."
+          },
+          "ruleId": "PREFER_SINGLE_QUOTES"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_subscription screen.dart"
+                },
+                "region": {
+                  "startLine": 89
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Unnecessary use of double quotes."
+          },
+          "ruleId": "PREFER_SINGLE_QUOTES"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_subscription screen.dart"
+                },
+                "region": {
+                  "startLine": 89
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Missing a required trailing comma."
+          },
+          "ruleId": "REQUIRE_TRAILING_COMMAS"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_subscription screen.dart"
+                },
+                "region": {
+                  "startLine": 96
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Missing a required trailing comma."
+          },
+          "ruleId": "REQUIRE_TRAILING_COMMAS"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_subscription screen.dart"
+                },
+                "region": {
+                  "startLine": 98
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Unnecessary use of double quotes."
+          },
+          "ruleId": "PREFER_SINGLE_QUOTES"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_subscription screen.dart"
+                },
+                "region": {
+                  "startLine": 111
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Use 'const' for final variables initialized to a constant value."
+          },
+          "ruleId": "PREFER_CONST_DECLARATIONS"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/lib/presentation/payment/payment_subscription screen.dart"
+                },
+                "region": {
+                  "startLine": 111
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Unnecessary use of double quotes."
+          },
+          "ruleId": "PREFER_SINGLE_QUOTES"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/test/flutter_test_config.dart"
+                },
+                "region": {
+                  "startLine": 16
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "The value of the argument is redundant because it matches the default value."
+          },
+          "ruleId": "AVOID_REDUNDANT_ARGUMENT_VALUES"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/test/presentation/delete_account/delete_account_screen_test.dart"
+                },
+                "region": {
+                  "startLine": 222
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Missing whitespace between adjacent strings."
+          },
+          "ruleId": "MISSING_WHITESPACE_BETWEEN_ADJACENT_STRINGS"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/test/presentation/delete_account/delete_account_screen_test.dart"
+                },
+                "region": {
+                  "startLine": 222
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "The line length exceeds the 80-character limit."
+          },
+          "ruleId": "LINES_LONGER_THAN_80_CHARS"
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/Users/sg/Documents/Flutter/Projects/flutter-skeleton-develop/test/test_config.dart"
+                },
+                "region": {
+                  "startLine": 10
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "The value of the argument is redundant because it matches the default value."
+          },
+          "ruleId": "AVOID_REDUNDANT_ARGUMENT_VALUES"
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "dartanalyzer",
+          "rules": null
+        }
+      }
+    }
+  ],
+  "version": "2.1.0"
+}
