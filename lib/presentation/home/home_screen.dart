@@ -37,7 +37,7 @@ class HomeScreenWrapper extends StatelessWidget {
       body: SafeArea(
         child: IndexedStack(
           index: currentIndex,
-          children: const [
+          children: [
             HomeScreenBody(),
             SearchScreen(),
             InitialCheckoutScreen(),
