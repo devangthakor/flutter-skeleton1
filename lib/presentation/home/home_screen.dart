@@ -33,7 +33,7 @@ class HomeScreenWrapper extends StatelessWidget {
       (bloc) => bloc.state.currentBottomNavIndex,
     );
     return Scaffold(
-      bottomNavigationBar: const BottomNavBar(),
+      bottomNavigationBar: BottomNavBar(),
       body: SafeArea(
         child: IndexedStack(
           index: currentIndex,
