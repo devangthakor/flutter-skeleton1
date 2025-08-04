@@ -34,7 +34,7 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  final AppRouter appRouter = AppRouter();
+  final AppRouter appRouterrrr = AppRouter();
   final InternetConnectivityHelper _connectivityHelper =
       InternetConnectivityHelper();
 
@@ -87,7 +87,7 @@ class _MainAppState extends State<MainApp> {
             GlobalCupertinoLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
           ],
-          routerConfig: appRouter.config(),
+          routerConfig: appRouterrrr.config(),
           theme: AppThemesData.themeData[AppThemeEnum.LightTheme]!,
         );
       },
