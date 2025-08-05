@@ -2,9 +2,9 @@ name: Flutter CI/CD Pipeline
 
 on:
   push:
-    branches: [git_hub_action_test]
+    branches: [git_hub_action_test,develop]
   pull_request:
-    branches: [git_hub_action_test]
+    branches: [git_hub_action_test,develop]
 
 jobs:
   build:
