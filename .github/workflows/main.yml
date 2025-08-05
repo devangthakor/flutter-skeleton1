@@ -71,11 +71,10 @@ jobs:
 
       # 6 ────────────────────────────────────── iOS BUILDS
       - name: Build iOS (dev)
-        run: flutter build ios --simulator --flavor dev --dart-define=APP_FLAVOR=DEV
-
+        run: flutter build ipa --flavor dev --dart-define=APP_FLAVOR=DEV --no-codesign
 
       - name: Build iOS (stage)
-        run: flutter build ios --simulator --flavor dev --dart-define=APP_FLAVOR=STAGE
+        run: flutter build ipa --flavor stage --dart-define=APP_FLAVOR=STAGE --no-codesign
 
       # 7 ────────────────────────────────────── ARTIFACTS
       - name: Archive untracked files
