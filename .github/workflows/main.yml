@@ -50,7 +50,7 @@ jobs:
       - name: Install Flutterfire CLI
         run: |
           dart pub global activate flutterfire_cli
-          echo "::add-path::${HOME}/.pub-cache/bin"
+#          echo "::add-path::${HOME}/.pub-cache/bin"
 
       - name: Build Android APKs
         run: |
