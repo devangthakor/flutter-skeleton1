@@ -47,6 +47,11 @@ jobs:
       - name: Run unit tests
         run: flutter test
 
+      - name: Install Flutterfire CLI
+        run: |
+          dart pub global activate flutterfire_cli
+          echo "::add-path::${HOME}/.pub-cache/bin"
+
       - name: Build Android APKs
         run: |
           flutter build apk --flavor dev   --dart-define=APP_FLAVOR=DEV
@@ -71,10 +76,10 @@ jobs:
 
       # 6 ────────────────────────────────────── iOS BUILDS
       - name: Build iOS (dev)
-        run: flutter build ios --flavor dev --dart-define=APP_FLAVOR=DEV --no-codesign
+        run: flutter build ipa --flavor dev --dart-define=APP_FLAVOR=DEV --no-codesign
 
       - name: Build iOS (stage)
-        run: flutter build ios --flavor stage --dart-define=APP_FLAVOR=STAGE --no-codesign
+        run: flutter build ipa --flavor stage --dart-define=APP_FLAVOR=STAGE --no-codesign
 
       # 7 ────────────────────────────────────── ARTIFACTS
       - name: Archive untracked files
