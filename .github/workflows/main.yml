@@ -88,7 +88,7 @@ jobs:
           untracked_files=$(git status --porcelain | grep -E "^(\\?\\?| M|A )" | cut -c4-)
           if [ -n "$untracked_files" ]; then
             echo "$untracked_files" | while IFS= read -r file; do
-              cp --parents -- "$file" "$ARCHIVE_DIR/"
+              cp --parents -- "./$file" "$ARCHIVE_DIR/"
             done
             tar -czf untracked-files.tar.gz -C $ARCHIVE_DIR .
           fi
