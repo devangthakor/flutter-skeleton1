@@ -52,10 +52,26 @@ jobs:
           dart pub global activate flutterfire_cli
 #          echo "::add-path::${HOME}/.pub-cache/bin"
 
+      #5 Setup Keystore
+      - name: Decode Keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > android/app/keystore.jks
+
+      - name: Create key.properties
+        run: |
+          echo "storePassword=${{ secrets.KEYSTORE_PASSWORD }}" > android/key.properties
+          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/key.properties
+          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
+          echo "storeFile=keystore.jks" >> android/key.properties
+
       - name: Build Android APKs
         run: |
-          flutter build apk --flavor dev   --dart-define=APP_FLAVOR=DEV
-          flutter build apk --flavor stage --dart-define=APP_FLAVOR=STAGE
+          flutter build apk --flavor dev   --dart-define=APP_FLAVOR=DEV --release
+          flutter build apk --flavor stage --dart-define=APP_FLAVOR=STAGE --release
+
+        #7 Building App Bundle (aab)
+      - name: Build appBundle
+        run: flutter build appbundle
 
       # 5 ────────────────────────────────────── PREPARE iOS TOOLCHAIN
       - uses: maxim-lobanov/setup-xcode@v1
