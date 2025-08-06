@@ -71,7 +71,9 @@ jobs:
 
         #7 Building App Bundle (aab)
       - name: Build appBundle
-        run: flutter build appbundle
+        run: |
+          flutter build appbundle --release --flavor dev
+          flutter build appbundle --release --flavor stage
 
       # 5 ────────────────────────────────────── PREPARE iOS TOOLCHAIN
       - uses: maxim-lobanov/setup-xcode@v1
