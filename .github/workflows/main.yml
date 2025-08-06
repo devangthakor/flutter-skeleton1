@@ -93,11 +93,37 @@ jobs:
           cd ..
 
       # 6 ────────────────────────────────────── iOS BUILDS
-      - name: Build iOS (dev)
-        run: flutter build ipa --flavor dev --dart-define=APP_FLAVOR=DEV --no-codesign
 
-      - name: Build iOS (stage)
-        run: flutter build ipa --flavor stage --dart-define=APP_FLAVOR=STAGE --no-codesign
+          # Decode cert/profiles for dev flavor (repeat for stage/prod)
+      - name: Decode Certificates & Profiles (dev)
+        run: |
+          echo "${{ secrets.P12_BASE64 }}" | base64 --decode > certificate.p12
+          echo "${{ secrets.P12_PASSWORD }}" > p12_password.txt
+          echo "${{ secrets.PROFILE_DEV_BASE64 }}" | base64 --decode > profile_dev.mobileprovision
+          echo "${{ secrets.EXPORTOPTIONS_DEV_BASE64 }}" | base64 --decode > ExportOptionsDev.plist
+
+      - name: Set up Keychain & Import Certificate
+        run: |
+          security create-keychain -p "ci_password" build.keychain
+          security default-keychain -s build.keychain
+          security unlock-keychain -p "ci_password" build.keychain
+          security import certificate.p12 -k build.keychain -P $(cat p12_password.txt) -A
+          security set-key-partition-list -S apple-tool:,apple: -k "ci_password" build.keychain
+
+      - name: Install Provisioning Profile (dev)
+        run: |
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          cp profile_dev.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+
+      # Build for dev flavor
+      - name: Build IPA (dev)
+        run: flutter build ipa --flavor dev --export-options-plist=ExportOptionsDev.plist --release
+
+#      - name: Build iOS (dev)
+#        run: flutter build ipa --flavor dev --dart-define=APP_FLAVOR=DEV --no-codesign
+#
+#      - name: Build iOS (stage)
+#        run: flutter build ipa --flavor stage --dart-define=APP_FLAVOR=STAGE --no-codesign
 
       # 7 ────────────────────────────────────── ARTIFACTS
 #      - name: Archive untracked files
