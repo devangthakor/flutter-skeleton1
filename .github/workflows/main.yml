@@ -119,6 +119,26 @@ jobs:
       - name: Build IPA (dev)
         run: flutter build ipa --flavor dev --export-options-plist=ExportOptionsDev.plist --release
 
+      # --- Build for stage ---
+      - name: Install Provisioning Profile (stage)
+        run: |
+          echo "${{ secrets.PROFILE_STAGE_BASE64 }}" | base64 --decode > profile_stage.mobileprovision
+          cp profile_stage.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+          echo "${{ secrets.EXPORTOPTIONS_STAGE_BASE64 }}" | base64 --decode > ExportOptionsStage.plist
+
+      - name: Build IPA (stage)
+        run: flutter build ipa --flavor stage --export-options-plist=ExportOptionsStage.plist --release
+
+      # --- Build for prod ---
+      - name: Install Provisioning Profile (prod)
+        run: |
+          echo "${{ secrets.PROFILE_PROD_BASE64 }}" | base64 --decode > profile_prod.mobileprovision
+          cp profile_prod.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+          echo "${{ secrets.EXPORTOPTIONS_PROD_BASE64 }}" | base64 --decode > ExportOptionsProd.plist
+
+      - name: Build IPA (prod)
+        run: flutter build ipa --flavor prod --export-options-plist=ExportOptionsProd.plist --release
+
 #      - name: Build iOS (dev)
 #        run: flutter build ipa --flavor dev --dart-define=APP_FLAVOR=DEV --no-codesign
 #
@@ -183,3 +203,24 @@ jobs:
         with:
           name: apk-stage-release
           path: build/app/outputs/flutter-apk/app-stage-release.apk
+
+      - name: Upload IPA (dev)
+        if: success()
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: ipa-dev-release
+          path: build/ios/ipa/*dev*.ipa
+
+      - name: Upload IPA (stage)
+        if: success()
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: ipa-stage-release
+          path: build/ios/ipa/*stage*.ipa
+
+      - name: Upload IPA (prod)
+        if: success()
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: ipa-prod-release
+          path: build/ios/ipa/*prod*.ipa
