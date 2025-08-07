@@ -52,3 +52,8 @@ test/**/failures/**/*.*
 
 # Environment variables
 .env
+
+# Ignore non-CI golden files and failures
+test/**/goldens/**/*.*
+test/**/failures/**/*.*
+!test/**/goldens/ci/*.*
