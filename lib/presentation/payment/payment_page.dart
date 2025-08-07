@@ -17,7 +17,7 @@ class _MyPaymentPageState extends State<MyPaymentPage> {
   bool done = false;
 
   void unusedFunction() {
-    print("This i   s  unus. ed"); // ❌ Unused function
+    print("This i   s  unus.   ed"); // ❌ Unused function
   }
 
   @override
