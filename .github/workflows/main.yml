@@ -150,7 +150,10 @@ jobs:
 
       # Build IPA for dev flavor
       - name: 7.1.4 Build IPA (dev)
-        run: flutter build ipa --flavor dev --export-options-plist=ExportOptionsDev.plist --release --ipa build/ios/ipa/app-dev.ipa
+        run: flutter build ipa --flavor dev --export-options-plist=ExportOptionsDev.plist --release
+
+      - name: Rename IPA (dev)
+        run: mv build/ios/ipa/Runner.ipa build/ios/ipa/app-dev.ipa
 
       # --- STAGE FLAVOR ---
       # Install provisioning profile for stage flavor
@@ -162,8 +165,10 @@ jobs:
 
       # Build IPA for stage flavor
       - name: 7.2.2 Build IPA (stage)
-        run: flutter build ipa --flavor stage --export-options-plist=ExportOptionsStage.plist --release --ipa build/ios/ipa/app-stage.ipa
+        run: flutter build ipa --flavor stage --export-options-plist=ExportOptionsStage.plist --release
 
+      - name: Rename IPA (stage)
+        run: mv build/ios/ipa/Runner.ipa build/ios/ipa/app-stage.ipa
       # --- PROD FLAVOR ---
       # Install provisioning profile for prod flavor
       - name: 7.3.1 Install provisioning profile (prod)
@@ -174,8 +179,10 @@ jobs:
 
       # Build IPA for prod flavor
       - name: 7.3.2 Build IPA (prod)
-        run: flutter build ipa --flavor prod --export-options-plist=ExportOptionsProd.plist --release --ipa build/ios/ipa/app-prod.ipa
+        run: flutter build ipa --flavor prod --export-options-plist=ExportOptionsProd.plist --release
 
+      - name: Rename IPA (prod)
+        run: mv build/ios/ipa/Runner.ipa build/ios/ipa/app-prod.ipa
       # 8. UPLOAD ARTIFACTS ──────────────────────
       # Upload Android dev APK
       - name: 8.1 Upload APK (dev)
