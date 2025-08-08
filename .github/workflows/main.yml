@@ -183,7 +183,7 @@ jobs:
         run: flutter build ipa --flavor prod --export-options-plist=ExportOptionsProd.plist --release
 
       - name: Rename IPA (prod)
-        run: mv "build/ios/ipa/Flutter Skeleton Prod.ipa" build/ios/ipa/app-prod.ipa
+        run: mv "build/ios/ipa/Flutter Skeleton.ipa" build/ios/ipa/app-prod.ipa
 
       # 8. UPLOAD ARTIFACTS ──────────────────────
       # Upload Android dev APK
