@@ -19,19 +19,36 @@ jobs:
       # 1. CHECKOUT ──────────────────────────────
       # Checkout repository code
       - name: 1.1 Checkout code
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
+        uses: actions/checkout@v4
 
       # 2. FLUTTER SDK SETUP ─────────────────────
       # Set up the Flutter toolchain
       - name: 2.1 Set up Flutter SDK
-        uses: subosito/flutter-action@v2
+        uses: subosito/flutter-action@v2.18.0
         with:
           flutter-version: '3.32.0'
 
+      - name: Validate secrets
+        run: |
+          for key in DEV_API_BASE_URL STAGE_API_BASE_URL PROD_API_BASE_URL KEYSTORE_BASE64 KEYSTORE_PASSWORD KEY_PASSWORD KEY_ALIAS P12_BASE64 P12_PASSWORD PROFILE_DEV_BASE64 EXPORTOPTIONS_DEV_BASE64 PROFILE_STAGE_BASE64 EXPORTOPTIONS_STAGE_BASE64 PROFILE_PROD_BASE64 EXPORTOPTIONS_PROD_BASE64; do
+          if [[ -z "${{ secrets[$key] }}" ]]; then
+           echo "Secret $key is missing!" >&2
+           exit 1
+          fi
+          done
+
       # 3. ENVIRONMENT & DEPENDENCIES ────────────
       # Create .env file for API endpoints
+
+      # (A) Cache Dart & Flutter pub packages
+      - name: Cache Flutter packages
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.pub-cache
+            .dart_tool
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.yaml') }}
+
       - name: 3.1 Create .env file
         run: |
           echo "DEV_API_BASE_URL=${{ secrets.DEV_API_BASE_URL }}"  > .env
@@ -79,11 +96,21 @@ jobs:
         run: |
           flutter build apk --flavor dev   --dart-define=APP_FLAVOR=DEV --release
           flutter build apk --flavor stage --dart-define=APP_FLAVOR=STAGE --release
+          flutter build apk --flavor prod --dart-define=APP_FLAVOR=PROD --release
 
       # 6. iOS SETUP ─────────────────────────────
       # Set up Xcode environment
+      # (B) Cache CocoaPods
+      - name: Cache CocoaPods
+        uses: actions/cache@v3
+        with:
+          path: |
+            ios/Pods
+            ios/Podfile.lock
+          key: ${{ runner.os }}-pods-${{ hashFiles('ios/Podfile.lock') }}
+
       - name: 6.1 Setup Xcode environment
-        uses: maxim-lobanov/setup-xcode@v1
+        uses: maxim-lobanov/setup-xcode@v1.6.0
         with:
           xcode-version: latest-stable
 
@@ -92,11 +119,9 @@ jobs:
         run: |
           sudo gem install cocoapods
           cd ios
-          rm -rf Pods Podfile.lock
-          pod cache clean --all
-          pod repo update
-          pod install
+          pod install --repo-update
           cd ..
+      
 
       # 7. iOS CERTIFICATES, PROFILES, AND BUILD ─────────────────────
       # --- DEV FLAVOR ---
@@ -111,11 +136,11 @@ jobs:
       # Set up keychain and import certificate (run once for all flavors)
       - name: 7.1.2 Set up iOS keychain & import certificate
         run: |
-          security create-keychain -p "ci_password" build.keychain
+          security create-keychain -p "${{ secrets.KEYCHAIN_PASSWORD }}" build.keychain
           security default-keychain -s build.keychain
-          security unlock-keychain -p "ci_password" build.keychain
+          security unlock-keychain -p "${{ secrets.KEYCHAIN_PASSWORD }}" build.keychain
           security import certificate.p12 -k build.keychain -P $(cat p12_password.txt) -A
-          security set-key-partition-list -S apple-tool:,apple: -k "ci_password" build.keychain
+          security set-key-partition-list -S apple-tool:,apple: -k "${{ secrets.KEYCHAIN_PASSWORD }}" build.keychain
 
       # Install provisioning profile for dev flavor
       - name: 7.1.3 Install provisioning profile (dev)
@@ -125,7 +150,7 @@ jobs:
 
       # Build IPA for dev flavor
       - name: 7.1.4 Build IPA (dev)
-        run: flutter build ipa --flavor dev --export-options-plist=ExportOptionsDev.plist --release
+        run: flutter build ipa --flavor dev --export-options-plist=ExportOptionsDev.plist --release --ipa build/ios/ipa/app-dev.ipa
 
       # --- STAGE FLAVOR ---
       # Install provisioning profile for stage flavor
@@ -137,7 +162,7 @@ jobs:
 
       # Build IPA for stage flavor
       - name: 7.2.2 Build IPA (stage)
-        run: flutter build ipa --flavor stage --export-options-plist=ExportOptionsStage.plist --release
+        run: flutter build ipa --flavor stage --export-options-plist=ExportOptionsStage.plist --release --ipa build/ios/ipa/app-stage.ipa
 
       # --- PROD FLAVOR ---
       # Install provisioning profile for prod flavor
@@ -149,7 +174,7 @@ jobs:
 
       # Build IPA for prod flavor
       - name: 7.3.2 Build IPA (prod)
-        run: flutter build ipa --flavor prod --export-options-plist=ExportOptionsProd.plist --release
+        run: flutter build ipa --flavor prod --export-options-plist=ExportOptionsProd.plist --release --ipa build/ios/ipa/app-prod.ipa
 
       # 8. UPLOAD ARTIFACTS ──────────────────────
       # Upload Android dev APK
@@ -174,7 +199,7 @@ jobs:
         uses: actions/upload-artifact@v4.6.2
         with:
           name: ipa-dev-release
-          path: build/ios/ipa/*.ipa
+          path: build/ios/ipa/app-dev.ipa
 
       # Upload iOS stage IPA
       - name: 8.4 Upload IPA (stage)
@@ -182,7 +207,7 @@ jobs:
         uses: actions/upload-artifact@v4.6.2
         with:
           name: ipa-stage-release
-          path: build/ios/ipa/*.ipa
+          path: build/ios/ipa/app-stage.ipa
 
       # Upload iOS prod IPA
       - name: 8.5 Upload IPA (prod)
@@ -190,4 +215,12 @@ jobs:
         uses: actions/upload-artifact@v4.6.2
         with:
           name: ipa-prod-release
-          path: build/ios/ipa/*.ipa
+          path: build/ios/ipa/app-prod.ipa
+
+      # 9. Cleanup secrets and keychain ─────────────────────
+      - name: 9. Cleanup secrets and keychain
+        if: always()
+        run: |
+          rm -f android/app/keystore.jks android/key.properties
+          rm -f certificate.p12 p12_password.txt profile_*.mobileprovision ExportOptions*.plist
+          security delete-keychain build.keychain || true
