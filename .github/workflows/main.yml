@@ -142,33 +142,33 @@ jobs:
           security import certificate.p12 -k build.keychain -P $(cat p12_password.txt) -A
           security set-key-partition-list -S apple-tool:,apple: -k "${{ secrets.KEYCHAIN_PASSWORD }}" build.keychain
 
-      # Install provisioning profile for dev flavor
-      - name: 7.1.3 Install provisioning profile (dev)
-        run: |
-          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-          cp profile_dev.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+#      # Install provisioning profile for dev flavor
+#      - name: 7.1.3 Install provisioning profile (dev)
+#        run: |
+#          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+#          cp profile_dev.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
 
-      # Build IPA for dev flavor
-      - name: 7.1.4 Build IPA (dev)
-        run: flutter build ipa --flavor dev --export-options-plist=ExportOptionsDev.plist --release
-
-      - name: Rename IPA (dev)
-        run: mv "build/ios/ipa/Flutter Skeleton Dev.ipa" build/ios/ipa/app-dev.ipa
-
-      # --- STAGE FLAVOR ---
-      # Install provisioning profile for stage flavor
-      - name: 7.2.1 Install provisioning profile (stage)
-        run: |
-          echo "${{ secrets.PROFILE_STAGE_BASE64 }}" | base64 --decode > profile_stage.mobileprovision
-          cp profile_stage.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
-          echo "${{ secrets.EXPORTOPTIONS_STAGE_BASE64 }}" | base64 --decode > ExportOptionsStage.plist
-
-      # Build IPA for stage flavor
-      - name: 7.2.2 Build IPA (stage)
-        run: flutter build ipa --flavor stage --export-options-plist=ExportOptionsStage.plist --release
-
-      - name: Rename IPA (stage)
-        run: mv "build/ios/ipa/Flutter Skeleton Stage.ipa" build/ios/ipa/app-stage.ipa
+#      # Build IPA for dev flavor
+#      - name: 7.1.4 Build IPA (dev)
+#        run: flutter build ipa --flavor dev --export-options-plist=ExportOptionsDev.plist --release
+#
+#      - name: Rename IPA (dev)
+#        run: mv "build/ios/ipa/Flutter Skeleton Dev.ipa" build/ios/ipa/app-dev.ipa
+#
+#      # --- STAGE FLAVOR ---
+#      # Install provisioning profile for stage flavor
+#      - name: 7.2.1 Install provisioning profile (stage)
+#        run: |
+#          echo "${{ secrets.PROFILE_STAGE_BASE64 }}" | base64 --decode > profile_stage.mobileprovision
+#          cp profile_stage.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+#          echo "${{ secrets.EXPORTOPTIONS_STAGE_BASE64 }}" | base64 --decode > ExportOptionsStage.plist
+#
+#      # Build IPA for stage flavor
+#      - name: 7.2.2 Build IPA (stage)
+#        run: flutter build ipa --flavor stage --export-options-plist=ExportOptionsStage.plist --release
+#
+#      - name: Rename IPA (stage)
+#        run: mv "build/ios/ipa/Flutter Skeleton Stage.ipa" build/ios/ipa/app-stage.ipa
 
       # --- PROD FLAVOR ---
       # Install provisioning profile for prod flavor
