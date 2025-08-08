@@ -175,6 +175,7 @@ jobs:
       - name: 7.3.1 Install provisioning profile (prod)
         run: |
           echo "${{ secrets.PROFILE_PROD_BASE64 }}" | base64 --decode > profile_prod.mobileprovision
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp profile_prod.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
           echo "${{ secrets.EXPORTOPTIONS_PROD_BASE64 }}" | base64 --decode > ExportOptionsProd.plist
 
