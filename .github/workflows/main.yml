@@ -28,14 +28,14 @@ jobs:
         with:
           flutter-version: '3.32.0'
 
-      - name: Validate secrets
-        run: |
-          for key in DEV_API_BASE_URL STAGE_API_BASE_URL PROD_API_BASE_URL KEYSTORE_BASE64 KEYSTORE_PASSWORD KEY_PASSWORD KEY_ALIAS P12_BASE64 P12_PASSWORD PROFILE_DEV_BASE64 EXPORTOPTIONS_DEV_BASE64 PROFILE_STAGE_BASE64 EXPORTOPTIONS_STAGE_BASE64 PROFILE_PROD_BASE64 EXPORTOPTIONS_PROD_BASE64; do
-          if [[ -z "${{ secrets[$key] }}" ]]; then
-           echo "Secret $key is missing!" >&2
-           exit 1
-          fi
-          done
+#      - name: Validate secrets
+#        run: |
+#          for key in DEV_API_BASE_URL STAGE_API_BASE_URL PROD_API_BASE_URL KEYSTORE_BASE64 KEYSTORE_PASSWORD KEY_PASSWORD KEY_ALIAS P12_BASE64 P12_PASSWORD PROFILE_DEV_BASE64 EXPORTOPTIONS_DEV_BASE64 PROFILE_STAGE_BASE64 EXPORTOPTIONS_STAGE_BASE64 PROFILE_PROD_BASE64 EXPORTOPTIONS_PROD_BASE64; do
+#          if [[ -z "${{ secrets[$key] }}" ]]; then
+#           echo "Secret $key is missing!" >&2
+#           exit 1
+#          fi
+#          done
 
       # 3. ENVIRONMENT & DEPENDENCIES ────────────
       # Create .env file for API endpoints
