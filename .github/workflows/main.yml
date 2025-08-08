@@ -77,26 +77,26 @@ jobs:
         run: |
           dart pub global activate flutterfire_cli
 
-      # 5. ANDROID SIGNING AND BUILD ─────────────
-      # Decode Android keystore
-      - name: 5.1 Decode Android Keystore
-        run: |
-          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > android/app/keystore.jks
-
-      # Create key.properties for signing
-      - name: 5.2 Create key.properties
-        run: |
-          echo "storePassword=${{ secrets.KEYSTORE_PASSWORD }}" > android/key.properties
-          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/key.properties
-          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
-          echo "storeFile=keystore.jks" >> android/key.properties
-
-      # Build Android APKs for dev and stage flavors
-      - name: 5.3 Build Android APKs (dev and stage)
-        run: |
-          flutter build apk --flavor dev   --dart-define=APP_FLAVOR=DEV --release
-          flutter build apk --flavor stage --dart-define=APP_FLAVOR=STAGE --release
-          flutter build apk --flavor prod --dart-define=APP_FLAVOR=PROD --release
+#      # 5. ANDROID SIGNING AND BUILD ─────────────
+#      # Decode Android keystore
+#      - name: 5.1 Decode Android Keystore
+#        run: |
+#          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > android/app/keystore.jks
+#
+#      # Create key.properties for signing
+#      - name: 5.2 Create key.properties
+#        run: |
+#          echo "storePassword=${{ secrets.KEYSTORE_PASSWORD }}" > android/key.properties
+#          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/key.properties
+#          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
+#          echo "storeFile=keystore.jks" >> android/key.properties
+#
+#      # Build Android APKs for dev and stage flavors
+#      - name: 5.3 Build Android APKs (dev and stage)
+#        run: |
+#          flutter build apk --flavor dev   --dart-define=APP_FLAVOR=DEV --release
+#          flutter build apk --flavor stage --dart-define=APP_FLAVOR=STAGE --release
+#          flutter build apk --flavor prod --dart-define=APP_FLAVOR=PROD --release
 
       # 6. iOS SETUP ─────────────────────────────
       # Set up Xcode environment
